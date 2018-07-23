@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+</head>
+
+<body>
+  <div id="app">
+    <div id="home">
+      <svg>
+        <circle fill="#FF4343" stroke="#890000" stroke-width="5" cx="80.141" cy="73.446" r="44" />
+      </svg>
+      <div>
+        <h1>GEOMETRY PERSON</h1>
+        <div>find your core personality type in shapes!</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const svg = d3.select('#home').append("svg");
+    svg.attr('width', 540).attr('height', 540);
+
+    const width = +svg.attr("width");
+    const height = +svg.attr('height');
+
+    const rect = svg.append('rect');
+    rect.style("fill", "#000");
+    rect.attr("x", width / 11).attr("y", height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
+
+    const circle = svg.append('circle');
+    circle.style("fill", "#0027C8");
+    circle.attr("cx", width / 2).attr("cy", height / 2).attr("r", width / 2);
+
+    const polygon = svg.append('polygon');
+    polygon.style("fill", "#FF3C82");
+    polygon.attr("points", `${width / 9},${height / 9} ${width / 9 * 8},${height / 9} ${width / 9 * 8},${height / 9 * 8}`);
+  </script>
+</body>
+
+</html>

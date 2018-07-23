@@ -1,0 +1,32 @@
+body {
+  background-color: #1469FF;
+  font-family: 'Roboto', sans-serif;
+}
+
+#home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+}
+
+#home>div>h1 {
+  color: #fff;
+  font-size: 64px;
+  font-weight: 800;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+#home>div>h1+div {
+  color: #fff;
+  font-size: 24px;
+}
+
+#home>svg {
+  position: absolute;
+  /* width: 540px;
+  height: 540px; */
+  z-index: -1;
+}
