@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+  <style>
+    #Q1 {
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+
+    #Q1>#Q1-main {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (min-width: 1200px) {
+      #Q1>#Q1-main>div {
+        padding-left: 12rem;
+        padding-right: 12rem;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      #Q1>#Q1-main>div {
+        padding-left: 8rem;
+        padding-right: 8rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      #Q1>#Q1-main>div {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #Q1>#Q1-main>div {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    #Q1>#Q1-main>div>h2 {
+      font-size: 64px;
+      color: #FF3C82;
+      margin-bottom: 1rem;
+    }
+
+    #Q1>#Q1-main>div>div:nth-child(2) {
+      font-size: 36px;
+      color: #FFFFFF;
+      font-weight: 700;
+      padding-bottom: 1rem;
+    }
+
+    #Q1>#Q1-main>div>div:nth-child(3) {
+      font-size: 24px;
+      color: #0027C8;
+      padding-bottom: 1rem;
+    }
+
+    #Q1>#Q1-main>div>button {
+      display: block;
+      margin-top: 1rem;
+      width: 100%;
+      color: #fff;
+      font-size: 20px;
+      line-height: 36px;
+      background-color: transparent;
+      border: 2px solid #FFFFFF;
+      border-radius: 30.5px;
+      cursor: pointer;
+    }
+
+    #Q1>#Q1-main>div>button:hover {
+      background-color: #fff;
+      color: #1469FF;
+    }
+
+    #Q1>#Q1-svg {
+      width: 40%;
+      height: 100%;
+      background-color: #0027C8;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="Q1">
+      <div id="Q1-main">
+        <div>
+          <h2>Q1</h2>
+          <div>If one day you get a gift that can change the rule of the world, which ability will you choose?</div>
+          <div>Choose the answer appeared in your mind instantly</div>
+          <button>Destroy all humans in the world</button>
+          <button>Make the war never happened</button>
+          <button>You won’t get old and live forever</button>
+        </div>
+      </div>
+      <div id="Q1-svg">
+
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const svgQ1 = d3.select('#Q1-svg').append('svg');
+    const Q1SvgDiv = document.querySelector('#Q1-svg');
+    const rect = svgQ1.append('rect');
+
+    const init = () => {
+      svgQ1.attr('width', Q1SvgDiv.clientWidth).attr('height', Q1SvgDiv.clientHeight);
+
+      let width = +svgQ1.attr('width');
+      let height = +svgQ1.attr('height');
+
+      
+      rect.style('fill', '#000');
+      rect.attr('x', width / 11).attr('y', height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
+    };
+    
+    init();
+
+    window.addEventListener('resize', init);
+  </script>
+</body>
+
+</html>

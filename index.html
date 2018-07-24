@@ -13,9 +13,6 @@
 <body>
   <div id="app">
     <div id="home">
-      <svg>
-        <circle fill="#FF4343" stroke="#890000" stroke-width="5" cx="80.141" cy="73.446" r="44" />
-      </svg>
       <div>
         <h1>GEOMETRY PERSON</h1>
         <div>find your core personality type in shapes!</div>
@@ -24,23 +21,36 @@
   </div>
   <script src="https://d3js.org/d3.v5.js"></script>
   <script>
-    const svg = d3.select('#home').append("svg");
+    const svg = d3.select('#home').append('svg');
     svg.attr('width', 540).attr('height', 540);
 
-    const width = +svg.attr("width");
+    const width = +svg.attr('width');
     const height = +svg.attr('height');
 
     const rect = svg.append('rect');
-    rect.style("fill", "#000");
-    rect.attr("x", width / 11).attr("y", height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
+    rect.style('fill', '#000');
+    rect.attr('x', width / 11).attr('y', height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
 
     const circle = svg.append('circle');
-    circle.style("fill", "#0027C8");
-    circle.attr("cx", width / 2).attr("cy", height / 2).attr("r", width / 2);
+    circle.style('fill', '#0027C8');
+    circle.attr('cx', width / 2).attr('cy', height / 2).attr('r', width / 2);
 
     const polygon = svg.append('polygon');
-    polygon.style("fill", "#FF3C82");
-    polygon.attr("points", `${width / 9},${height / 9} ${width / 9 * 8},${height / 9} ${width / 9 * 8},${height / 9 * 8}`);
+    polygon.style('fill', '#FF3C82');
+    polygon.attr('points',
+`${width / 10 * 1.5},${height / 10 * 2.5} \
+${width / 10 * 4.4},${height / 10 * 2.5} \
+${width / 10 * 5},${height / 10 * 1.4} \
+${width / 10 * 5.6},${height / 10 * 2.5} \
+${width / 10 * 8.5},${height / 10 * 2.5} \
+${width / 10 * 7},${height / 10 * 5} \
+${width / 10 * 8.5},${height / 10 * 7.5} \
+${width / 10 * 5.6},${height / 10 * 7.5} \
+${width / 10 * 5},${height / 10 * 8.6} \
+${width / 10 * 4.4},${height / 10 * 7.5} \
+${width / 10 * 1.5},${height / 10 * 7.5} \
+${width / 10 * 3},${height / 10 * 5}`);
+    polygon.attr('transform', `rotate(260, ${width / 2}, ${height / 2})`);
   </script>
 </body>
 
