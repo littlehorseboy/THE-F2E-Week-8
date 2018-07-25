@@ -117,18 +117,32 @@
   <script src="https://d3js.org/d3.v5.js"></script>
   <script>
     const svgQ1 = d3.select('#Q1-svg').append('svg');
-    const Q1SvgDiv = document.querySelector('#Q1-svg');
-    const rect = svgQ1.append('rect');
-
+    const svgDivQ1 = document.querySelector('#Q1-svg');
+    const rectQ1 = svgQ1.append('rect');
+    rectQ1.style('fill', '#FF3C82');
+    const triangleQ1 = svgQ1.append('polygon');
+    triangleQ1.style('fill', '#fff');
+    const circleQ1 = svgQ1.append('circle');
+    circleQ1.style('fill', '#000');
+    
     const init = () => {
-      svgQ1.attr('width', Q1SvgDiv.clientWidth).attr('height', Q1SvgDiv.clientHeight);
+      svgQ1.attr('width', svgDivQ1.clientWidth).attr('height', svgDivQ1.clientHeight);
 
       let width = +svgQ1.attr('width');
       let height = +svgQ1.attr('height');
 
-      
-      rect.style('fill', '#000');
-      rect.attr('x', width / 11).attr('y', height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
+      rectQ1.attr('x', width / 10 * 1.5).attr('y', height / 10 * 1.5).attr('width', width / 10 * 3.5).attr('height', width / 10 * 3.5);
+
+//       triangleQ1.attr('points', `${width / 10 * 9},${height / 10 * 4.5} \
+// ${width / 10 * 9 + width / 10 * 1.5},${height / 10 * 4.5 + width / 10 * 1.5 / 3 * 4} \
+// ${width / 10 * 9 - width / 10 * 1.5},${height / 10 * 4.5 + width / 10 * 1.5 / 3 * 4}`);
+
+      triangleQ1.attr('points', `${width / 10 * 9},${height / 10 * 4.5} \
+${width / 10 * 9 + 90},${height / 10 * 4.5 + 160} \
+${width / 10 * 9 - 90},${height / 10 * 4.5 + 160}`) // 30,0 0,40 60,40
+        .attr('transform', `rotate(0, ${width / 10 * 9 + 135}, ${height / 10 * 4.5 + 80})`); // 這行絕對是算錯的
+
+      circleQ1.attr('cx', width / 10 * 6.5).attr('cy', height / 10 * 9.5).attr('r', width / 10 * 4.5);
     };
     
     init();
