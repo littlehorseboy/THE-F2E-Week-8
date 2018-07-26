@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+  <style>
+    body {
+      width: 100%;
+      height: 500vh;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .container:nth-child(1) { height: 200vh; }
+    .container:nth-child(2) { height: 0; }
+
+    .box {
+      padding: 1em 2em;
+      margin: 0 .5em;
+      background: #ddd;
+      
+    }
+
+    .box::before {
+      content: attr(data-timing);
+    }
+
+    .easeBox { transform: translateY(var(--ty)); }
+    .rotateBox { transform: rotate(var(--r)); }
+    .fadeBox { opacity: var(--o); }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="box easeBox" data-timing="sineInOut">asd</div>
+      <div class="box easeBox" data-timing="backInOut"></div>
+      <div class="box easeBox" data-timing="circIn"></div>
+      <div class="box easeBox" data-timing="quintOut"></div>
+      <div class="box easeBox" data-timing="expoIn"></div>
+    </div>
+    
+    <div class="container">
+      <div class="box rotateBox">rotate</div>
+      <div class="box fadeBox">fade</div>
+    </div>
+
+  </div>
+  <script src="src/lib/basicScroll.min.js"></script>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const easeBoxes = []
+
+    // Create an animation for each ease box. Each with a different timing.
+    document.querySelectorAll('.easeBox').forEach((elem, i) => {
+
+      // Get the timing from the data attribute.
+      // You can also hard-code the timing, but for the demo it's easier this way.
+      const timing = elem.getAttribute('data-timing')
+
+      // Crate an instance for the current element and store the instance in an array.
+      // We start the animation later using the instances from the array.
+      easeBoxes.push(basicScroll.create({
+        elem: elem,
+        from: 'middle-bottom',
+        to: 'bottom-top',
+        direct: true,
+        props: {
+          '--ty': {
+            from: '0',
+            to: '100px',
+            timing: timing
+          }
+        }
+      }))
+
+    })
+
+    const rotateBox = basicScroll.create({
+      elem: document.querySelector('.rotateBox'),
+      from: 'top-middle',
+      to: 'top-top',
+      props: {
+        '--r': {
+          from: '0',
+          to: '1turn'
+        }
+      }
+    })
+
+    const fadeBox = basicScroll.create({
+      elem: document.querySelector('.fadeBox'),
+      from: 'bottom-bottom',
+      to: 'top-middle',
+      inside: (instance, percentage) => console.log('fadeBox is animating'),
+      outside: (instance, percentage) => console.log('fadeBox is not animating'),
+      props: {
+        '--o': {
+          from: .01,
+          to: .99
+        }
+      }
+    })
+
+    rotateBox.start()
+    fadeBox.start()
+    easeBoxes.forEach((easeBox) => easeBox.start())
+  </script>
+</body>
+
+</html>
