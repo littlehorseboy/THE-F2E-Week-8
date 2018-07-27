@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+  <style>
+    #Q3 {
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+
+    #Q3>#Q3-main {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #FF3C82;
+    }
+
+    @media (min-width: 1200px) {
+      #Q3>#Q3-main>div {
+        padding-left: 12rem;
+        padding-right: 12rem;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      #Q3>#Q3-main>div {
+        padding-left: 8rem;
+        padding-right: 8rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      #Q3>#Q3-main>div {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #Q3>#Q3-main>div {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    #Q3>#Q3-main>div>h2 {
+      font-size: 64px;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    #Q3>#Q3-main>div>div:nth-child(2) {
+      font-size: 36px;
+      color: #000;
+      font-weight: 700;
+      padding-bottom: 1rem;
+    }
+
+    #Q3>#Q3-main>div>div:nth-child(3) {
+      font-size: 24px;
+      color: #000;
+      padding-bottom: 1rem;
+    }
+
+    #Q3>#Q3-main>div>button {
+      display: block;
+      margin-top: 1rem;
+      width: 100%;
+      color: #fff;
+      font-size: 20px;
+      line-height: 36px;
+      background-color: transparent;
+      border: 2px solid #FFFFFF;
+      border-radius: 30.5px;
+      cursor: pointer;
+    }
+
+    #Q3>#Q3-main>div>button:hover {
+      background-color: #fff;
+      color: #FF3C82;
+    }
+
+    #Q3>#Q3-svg {
+      width: 40%;
+      height: 100%;
+      background-color: #1469FF;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="Q3">
+      <div id="Q3-main">
+        <div>
+          <h2>Q3</h2>
+          <div>When you’re in a exam which you barely prepared for, which is your priority solution?</div>
+          <div>Choose the answer appeared in your mind instantly</div>
+          <button>Take a nap right away</button>
+          <button>Fill the answer randomly</button>
+          <button>All fill the answer "C"</button>
+        </div>
+      </div>
+      <div id="Q3-svg">
+
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const svgQ3 = d3.select('#Q3-svg').append('svg');
+    const svgDivQ3 = document.querySelector('#Q3-svg');
+    const rectQ3 = svgQ3.append('rect');
+    rectQ3.style('fill', '#0027C8');
+    const triangleQ3 = svgQ3.append('polygon');
+    triangleQ3.style('fill', '#000');
+    const circleQ3 = svgQ3.append('circle');
+    circleQ3.style('fill', '#fff');
+
+    const init = () => {
+      svgQ3.attr('width', svgDivQ3.clientWidth).attr('height', svgDivQ3.clientHeight);
+
+      let width = +svgQ3.attr('width');
+      let height = +svgQ3.attr('height');
+
+      // Q3 正方形
+      const rectQ3X = width / 10 * 1.5;
+      const rectQ3Y = height / 10 * 1.5;
+      const rectQ3Width = width / 10 * 7;
+      const rectQ3Height = width / 10 * 7;
+
+      rectQ3.attr('x', rectQ3X).attr('y', rectQ3Y)
+        .attr('width', rectQ3Width).attr('height', rectQ3Height)
+        .attr('transform',
+          `rotate(2, ${rectQ3X + rectQ3Width / 2}, \
+${rectQ3Y + rectQ3Height / 2})`);
+
+      // Q3 正三角形
+      // 直角三角形 3 4 5 原則, 有底部兩點的座標 可以推算頂點
+      // 三角形重心座標 x: x1 * x2 * x3 / 3, y: y1 * y2 * y3 / 3
+      const triangleQ3Size = width / 10 * 2.5;
+      const triangleQ3X = width / 10 * 7;
+      const triangleQ3Y = height / 10 * 9;
+
+      triangleQ3.attr('points',
+        `${triangleQ3X},${triangleQ3Y - triangleQ3Size / 3 * 5} \
+${triangleQ3X + triangleQ3Size},${triangleQ3Y} \
+${triangleQ3X - triangleQ3Size},${triangleQ3Y}`
+        )
+        .attr('transform',
+          `rotate(-30, ${(triangleQ3X + triangleQ3X + triangleQ3Size + triangleQ3X - triangleQ3Size) / 3}, \
+${(triangleQ3Y - triangleQ3Size / 3 * 5 + triangleQ3Y + triangleQ3Y) / 3})`
+        );
+
+      // Q3 圓形
+      circleQ3.attr('cx', width / 10 * 8.5).attr('cy', height / 10 * 1.5).attr('r', width / 10 * 3.5);
+    };
+
+    init();
+
+    window.addEventListener('resize', init);
+  </script>
+</body>
+
+</html>

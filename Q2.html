@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+  <style>
+    #Q2 {
+      height: 100%;
+      display: flex;
+      align-items: stretch;
+    }
+
+    #Q2>#Q2-main {
+      width: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #0027C8;
+    }
+
+    @media (min-width: 1200px) {
+      #Q2>#Q2-main>div {
+        padding-left: 12rem;
+        padding-right: 12rem;
+      }
+    }
+
+    @media (max-width: 1199px) {
+      #Q2>#Q2-main>div {
+        padding-left: 8rem;
+        padding-right: 8rem;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      #Q2>#Q2-main>div {
+        padding-left: 5rem;
+        padding-right: 5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      #Q2>#Q2-main>div {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    #Q2>#Q2-main>div>h2 {
+      font-size: 64px;
+      color: #FF3C82;
+      margin-bottom: 1rem;
+    }
+
+    #Q2>#Q2-main>div>div:nth-child(2) {
+      font-size: 36px;
+      color: #FFFFFF;
+      font-weight: 700;
+      padding-bottom: 1rem;
+    }
+
+    #Q2>#Q2-main>div>div:nth-child(3) {
+      font-size: 24px;
+      color: #1469FF;
+      padding-bottom: 1rem;
+    }
+
+    #Q2>#Q2-main>div>button {
+      display: block;
+      margin-top: 1rem;
+      width: 100%;
+      color: #fff;
+      font-size: 20px;
+      line-height: 36px;
+      background-color: transparent;
+      border: 2px solid #FFFFFF;
+      border-radius: 30.5px;
+      cursor: pointer;
+    }
+
+    #Q2>#Q2-main>div>button:hover {
+      background-color: #fff;
+      color: #0027C8;
+    }
+
+    #Q2>#Q2-svg {
+      width: 40%;
+      height: 100%;
+      background-color: #FF3C82;
+      overflow-y: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="Q2">
+      <div id="Q2-svg">
+
+      </div>
+      <div id="Q2-main">
+        <div>
+          <h2>Q2</h2>
+          <div>Imagine you’re almost late, but totally lost at a forked road. Which way do you prefer to go?</div>
+          <div>Choose the answer appeared in your mind instantly</div>
+          <button>The left one</button>
+          <button>The right one</button>
+          <button>Open Google Map</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const svgQ2 = d3.select('#Q2-svg').append('svg');
+    const svgDivQ2 = document.querySelector('#Q2-svg');
+    const rectQ2 = svgQ2.append('rect');
+    rectQ2.style('fill', '#1469FF');
+    const triangleQ2 = svgQ2.append('polygon');
+    triangleQ2.style('fill', '#fff');
+    const circleQ2 = svgQ2.append('circle');
+    circleQ2.style('fill', '#000');
+
+    const init = () => {
+      svgQ2.attr('width', svgDivQ2.clientWidth).attr('height', svgDivQ2.clientHeight);
+
+      let width = +svgQ2.attr('width');
+      let height = +svgQ2.attr('height');
+
+      // Q2 正方形
+      const rectQ2X = width / 10 * -3;
+      const rectQ2Y = height / 10 * 3.5;
+      const rectQ2Width = width / 10 * 7;
+      const rectQ2Height = width / 10 * 7;
+
+      rectQ2.attr('x', rectQ2X).attr('y', rectQ2Y)
+        .attr('width', rectQ2Width).attr('height', rectQ2Height)
+        .attr('transform',
+          `rotate(-36, ${rectQ2X + rectQ2Width / 2}, \
+${rectQ2Y + rectQ2Height / 2})`);
+
+      // Q2 正三角形
+      // 直角三角形 3 4 5 原則, 有底部兩點的座標 可以推算頂點
+      // 三角形重心座標 x: x1 * x2 * x3 / 3, y: y1 * y2 * y3 / 3
+      const triangleQ2Size = width / 10 * 3;
+      const triangleQ2X = width / 10 * 6.5;
+      const triangleQ2Y = height / 10 * 2.5;
+
+      triangleQ2.attr('points',
+        `${triangleQ2X},${triangleQ2Y - triangleQ2Size / 3 * 5} \
+${triangleQ2X + triangleQ2Size},${triangleQ2Y} \
+${triangleQ2X - triangleQ2Size},${triangleQ2Y}`
+        )
+        .attr('transform',
+          `rotate(32, ${(triangleQ2X + triangleQ2X + triangleQ2Size + triangleQ2X - triangleQ2Size) / 3}, \
+${(triangleQ2Y - triangleQ2Size / 3 * 5 + triangleQ2Y + triangleQ2Y) / 3})`
+        );
+
+      // Q2 圓形
+      circleQ2.attr('cx', width / 10 * 5).attr('cy', height / 10 * 7).attr('r', width / 10 * 2);
+    };
+
+    init();
+
+    window.addEventListener('resize', init);
+  </script>
+</body>
+
+</html>

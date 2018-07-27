@@ -131,22 +131,32 @@
       let width = +svgQ1.attr('width');
       let height = +svgQ1.attr('height');
 
-      rectQ1.attr('x', width / 10 * 1.5).attr('y', height / 10 * 1.5)
-        .attr('width', width / 10 * 3.5).attr('height', width / 10 * 3.5);
+      // Q1 正方形
+      const rectQ1X = width / 10 * 1.5;
+      const rectQ1Y = height / 10 * 1.5;
+      const rectQ1Width = width / 10 * 3.5;
+      const rectQ1Height = width / 10 * 3.5;
 
+      rectQ1.attr('x', rectQ1X).attr('y', rectQ1Y)
+        .attr('width', rectQ1Width).attr('height', rectQ1Height);
+
+      // Q1 正三角形
       // 直角三角形 3 4 5 原則, 有底部兩點的座標 可以推算頂點
       // 三角形重心座標 x: x1 * x2 * x3 / 3, y: y1 * y2 * y3 / 3
       const triangleQ1Size = width / 10 * 1.5;
+      const triangleQ1X = width / 10 * 9;
+      const triangleQ1Y = height / 10 * 5.5;
 
       triangleQ1.attr('points',
-        `${width / 10 * 9},${height / 10 * 5.5 - triangleQ1Size / 3 * 5} \
-${width / 10 * 9 + triangleQ1Size},${height / 10 * 5.5} \
-${width / 10 * 9 - triangleQ1Size},${height / 10 * 5.5}`)
+        `${triangleQ1X},${triangleQ1Y - triangleQ1Size / 3 * 5} \
+${triangleQ1X + triangleQ1Size},${triangleQ1Y} \
+${triangleQ1X - triangleQ1Size},${triangleQ1Y}`)
         .attr('transform',
-          `rotate(0, ${(width / 10 * 9 + width / 10 * 9 + triangleQ1Size + width / 10 * 9 - triangleQ1Size) / 3}, \
-${(height / 10 * 5.5 - triangleQ1Size / 3 * 5 + height / 10 * 5.5 + height / 10 * 5.5) / 3})`
+          `rotate(0, ${(triangleQ1X + triangleQ1X + triangleQ1Size + triangleQ1X - triangleQ1Size) / 3}, \
+${(triangleQ1Y - triangleQ1Size / 3 * 5 + triangleQ1Y + triangleQ1Y) / 3})`
         );
 
+      // Q1 圓形
       circleQ1.attr('cx', width / 10 * 6.5).attr('cy', height / 10 * 9.5).attr('r', width / 10 * 4.5);
     };
 
