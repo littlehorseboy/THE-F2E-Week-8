@@ -148,9 +148,10 @@
       const triangleQ1Y = height / 10 * 5.5;
 
       triangleQ1.attr('points',
-        `${triangleQ1X},${triangleQ1Y - triangleQ1Size / 3 * 5} \
+          `${triangleQ1X},${triangleQ1Y - triangleQ1Size / 3 * 5} \
 ${triangleQ1X + triangleQ1Size},${triangleQ1Y} \
-${triangleQ1X - triangleQ1Size},${triangleQ1Y}`)
+${triangleQ1X - triangleQ1Size},${triangleQ1Y}`
+        )
         .attr('transform',
           `rotate(0, ${(triangleQ1X + triangleQ1X + triangleQ1Size + triangleQ1X - triangleQ1Size) / 3}, \
 ${(triangleQ1Y - triangleQ1Size / 3 * 5 + triangleQ1Y + triangleQ1Y) / 3})`

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>parallax scrolling</title>
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
+  <link rel="stylesheet" href="src/css/index.css">
+  <style>
+    #calculatingTriangle{
+      height: 100%;
+      overflow-y: hidden;
+    } 
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="calculatingTriangle">
+      
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v5.js"></script>
+  <script>
+    const calculatingTriangle = d3.select('#calculatingTriangle').append('svg');
+    const calculatingTriangleDiv = document.querySelector('#calculatingTriangle');
+    
+    const triangleQ1 = calculatingTriangle.append('polygon');
+    triangleQ1.style('fill', '#fff');
+
+    const init = () => {
+      calculatingTriangle
+        .attr('width', calculatingTriangleDiv.clientWidth)
+        .attr('height', calculatingTriangleDiv.clientHeight);
+
+      let width = +calculatingTriangle.attr('width');
+      let height = +calculatingTriangle.attr('height');
+
+      // 正三角形
+      // 直角三角形 3 4 5 原則, 有底部兩點的座標 可以推算頂點
+      // 三角形重心座標 x: x1 * x2 * x3 / 3, y: y1 * y2 * y3 / 3
+      const triangleQ1Size = width / 10 * 1.5;
+      const triangleQ1X = width / 10 * 9;
+      const triangleQ1Y = height / 10 * 5.5;
+
+      triangleQ1.attr('points',
+        `${triangleQ1X},${triangleQ1Y - triangleQ1Size / 3 * 5} \
+${triangleQ1X + triangleQ1Size},${triangleQ1Y} \
+${triangleQ1X - triangleQ1Size},${triangleQ1Y}`)
+        .attr('transform',
+          `rotate(0, ${(triangleQ1X + triangleQ1X + triangleQ1Size + triangleQ1X - triangleQ1Size) / 3}, \
+${(triangleQ1Y - triangleQ1Size / 3 * 5 + triangleQ1Y + triangleQ1Y) / 3})`
+        );
+    };
+
+    init();
+
+    window.addEventListener('resize', init);
+  </script>
+</body>
+
+</html>
