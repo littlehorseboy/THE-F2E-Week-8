@@ -19,6 +19,8 @@
   "homepage": "https://github.com/littlehorseboy/THE-F2E-Week-8#readme",
   "devDependencies": {
     "eslint": "^5.2.0",
-    "eslint-plugin-import": "^2.13.0"
+    "eslint-plugin-import": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^4.0.1"
   }
 }

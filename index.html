@@ -7,51 +7,113 @@
   <title>parallax scrolling</title>
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/latest/normalize.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700,700i,900">
-  <link rel="stylesheet" href="src/css/index.css">
+  <link rel="stylesheet" href="src/css/style.css">
+  <style>
+    .test {
+      border-style: solid;
+      border-width: 100px 100px 100px 100px;
+      border-color: red blue green black;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
-    <div id="home">
-      <div>
-        <h1>GEOMETRY PERSON</h1>
-        <div>find your core personality type in shapes!</div>
+    <div class="opening">
+      <div class="star">
+        <div class="star__top"></div>
+        <div class="star__bottom"></div>
+      </div>
+      <div class="square"></div>
+      <div class="circle"></div>
+      <div class="text-block">
+        <div class="text-block__title">GEOMETRY PERSON</div>
+        <div class="text-block__desc">find your core personality type in shapes!</div>
+      </div>
+    </div>
+
+    <div class="screenQ1">
+      <div class="text-block">
+        <div class="text-block__title">GEOMETRY PERSON</div>
+        <div class="text-block__desc">find your core personality type in shapes!</div>
+      </div>
+      <div class="q-section">
+        <div class="q-section__wrapper">
+          <div class="q-section__number">Q1</div>
+          <div class="q-section__title">
+            If one day you get a gift that can change the rule of the world, which ability will you choose?
+          </div>
+          <div class="q-section__desc">
+            Choose the answer appeared in your mind instantly
+          </div>
+          <ul class="q-section__options">
+            <li data-value="1">Destroy all humans in the world</li>
+            <li data-value="2">Make the war never happened</li>
+            <li data-value="3">You won’t get old and live forever</li>
+          </ul>
+        </div>
+      </div>
+      <div class="animate-section">
+        <div class="animate-section__square"></div>
+        <div class="animate-section__triangle"></div>
+        <div class="animate-section__circle"></div>
+      </div>
+    </div>
+
+    <div class="screenQ2">
+      <div class="q-section">
+        <div class="q-section__wrapper">
+          <div class="q-section__number">Q2</div>
+          <div class="q-section__title">
+            Imagine you’re almost late, but totally lost at a forked road. Which way do you prefer to go?
+          </div>
+          <div class="q-section__desc">
+            Choose the answer appeared in your mind instantly
+          </div>
+          <ul class="q-section__options">
+            <li data-value="1">The left one</li>
+            <li data-value="2">The right one</li>
+            <li data-value="3">Open Google Map</li>
+          </ul>
+        </div>
+      </div>
+      <div class="animate-section">
+        <div class="animate-section__square"></div>
+        <div class="animate-section__triangle"></div>
+        <div class="animate-section__circle"></div>
+      </div>
+    </div>
+
+    <div class="screenQ3">
+      <div class="q-section">
+        <div class="q-section__wrapper">
+          <div class="q-section__number">Q3</div>
+          <div class="q-section__title">
+            When you’re in a exam which you barely prepared for, which is your priority solution?
+          </div>
+          <div class="q-section__desc">
+            Choose the answer appeared in your mind instantly
+          </div>
+          <ul class="q-section__options">
+            <li data-value="1">Take a nap right away</li>
+            <li data-value="2">Fill the answer randomly</li>
+            <li data-value="3">All fill the answer "C"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="animate-section">
+        <div class="animate-section__square"></div>
+        <div class="animate-section__triangle"></div>
+        <div class="animate-section__circle"></div>
       </div>
     </div>
   </div>
-  <script src="https://d3js.org/d3.v5.js"></script>
-  <script>
-    const svg = d3.select('#home').append('svg');
-    svg.attr('width', 540).attr('height', 540);
 
-    const width = +svg.attr('width');
-    const height = +svg.attr('height');
-
-    const rect = svg.append('rect');
-    rect.style('fill', '#000');
-    rect.attr('x', width / 11).attr('y', height / 11).attr('width', width / 11 * 9).attr('height', height / 11 * 9);
-
-    const circle = svg.append('circle');
-    circle.style('fill', '#0027C8');
-    circle.attr('cx', width / 2).attr('cy', height / 2).attr('r', width / 2);
-
-    const polygon = svg.append('polygon');
-    polygon.style('fill', '#FF3C82');
-    polygon.attr('points',
-`${width / 10 * 1.5},${height / 10 * 2.5} \
-${width / 10 * 4.4},${height / 10 * 2.5} \
-${width / 10 * 5},${height / 10 * 1.4} \
-${width / 10 * 5.6},${height / 10 * 2.5} \
-${width / 10 * 8.5},${height / 10 * 2.5} \
-${width / 10 * 7},${height / 10 * 5} \
-${width / 10 * 8.5},${height / 10 * 7.5} \
-${width / 10 * 5.6},${height / 10 * 7.5} \
-${width / 10 * 5},${height / 10 * 8.6} \
-${width / 10 * 4.4},${height / 10 * 7.5} \
-${width / 10 * 1.5},${height / 10 * 7.5} \
-${width / 10 * 3},${height / 10 * 5}`);
-    polygon.attr('transform', `rotate(0, ${width / 2}, ${height / 2})`);
-  </script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/plugins/CSSPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/easing/EasePack.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
+  <script src="src/js/script.js"></script>
 </body>
 
 </html>
