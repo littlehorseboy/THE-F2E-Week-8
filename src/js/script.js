@@ -153,9 +153,13 @@ const screenQ3Start = () => {
       TweenLite.to(animateSection, 0.5, { css: { left: '0%' },
         onComplete: () => {
           screenQ3.remove();
-          screenQ2Start();
+          screenCalculating();
         },
       });
     });
   });
+};
+
+const screenCalculating = () => {
+
 };

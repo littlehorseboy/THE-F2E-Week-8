@@ -109,6 +109,9 @@ body {
 }
 
 .q-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: $light-blue;
   height: 100%;
   width: 60%;
