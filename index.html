@@ -17,7 +17,7 @@
   </style>
 </head>
 
-<body>
+<body style="overflow: hidden;">
   <div id="app">
     <div class="opening">
       <div class="star">
@@ -107,6 +107,51 @@
         <div class="animate-section__circle"></div>
       </div>
     </div>
+
+    <div class="calculating hidden">
+      <div class="text-block">
+        <div class="text-block__title">You are...</div>
+        <div class="text-block__desc">Keep scrolling to show the result</div>
+      </div>
+
+      <div class="trigger1" style="position: relative; top: 100vh;"></div>
+      <div class="trigger2" style="position: relative; top: 200vh;"></div>
+      <div class="trigger3" style="position: relative; top: 300vh;"></div>
+      <div class="trigger4" style="position: relative; top: 400vh;"></div>
+    </div>
+
+    <div class="screenResult hidden">
+      <div class="screenResult__text invisible">Your personality is</div>
+      <div class="screenResult__ans invisible">TRIANGLE</div>
+      <div class="tri triangle1"></div>
+      <div class="tri triangle2"></div>
+      <div class="tri triangle3"></div>
+      <div class="tri triangle4"></div>
+      <div class="tri triangle5"></div>
+      <div class="tri triangle6"></div>
+      <div class="tri triangle7"></div>
+      <div class="triangle-blue"></div>
+      <div class="triangle-white"></div>
+      <div class="triangle-black"></div>
+      <div class="screenResult__result invisible">
+        <div class="screenResult__per">
+          AGGRESSIVE
+        </div>
+        <div class="screenResult__per">
+          INDEPENDENT
+        </div>
+        <div class="screenResult__per">
+          SELF-MOTIVATED
+        </div>
+        <div class="screenResult__desc">
+          The triangle type people are natural-born leaders, full of passion and motivation, trying to fix their mistakes as they go.
+        </div>
+        <div class="screenResult__btn" onclick="location.reload();">
+          TRY AGAIN
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script> -->
@@ -115,7 +160,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenLite.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/animation.gsap.js"></script>
   <script src="src/js/script.js"></script>
 </body>
 
