@@ -29,9 +29,9 @@ const opening = () => {
   const circle = document.querySelector('.circle');
   const square = document.querySelector('.square');
 
-  TweenLite.to(star, 5, { rotation: 360, ease: Power2.easeOut });
-  TweenLite.to(circle, 5, { rotation: 360, ease: Power2.easeOut });
-  TweenLite.to(square, 5, { rotation: -360, ease: Power2.easeOut });
+  TweenLite.to(star, 5, { rotation: '+=360', ease: Power2.easeOut });
+  TweenLite.to(circle, 5, { rotation: '+=360', ease: Power2.easeOut });
+  TweenLite.to(square, 5, { rotation: '-=360', ease: Power2.easeOut });
 
   TweenLite.to(circle, 2.5, { css: { scale: 1.1 } });
   TweenLite.to(circle, 2.5, { css: { scale: 1 }, delay: 2.5 });
@@ -80,8 +80,8 @@ const screenQ1Start = () => {
   TweenLite.to(triangle, 2 + 0.2, { css: { top: '300px' }, ease: Power2.easeOut, delay: 1 + 1 });
   TweenLite.to(circle, 2, { css: { bottom: '-100px' }, ease: Power2.easeOut, delay: 1 + 1 });
 
-  TweenLite.to(square, 4, { rotation: 360, delay: 1 + 1 + 2 });
-  TweenLite.to(triangle, 4, { rotation: -360, delay: 1 + 1 + 2 });
+  TweenLite.to(square, 4, { rotation: '+=360', delay: 1 + 1 + 2 });
+  TweenLite.to(triangle, 4, { rotation: '-=360', delay: 1 + 1 + 2 });
   TweenLite.to(circle, 4, { css: { x: '+=20', y: '+=30' }, ease: Power2.easeOut, delay: 1 + 1 + 2 });
 
 
@@ -122,8 +122,8 @@ const screenQ2Start = () => {
   TweenLite.to(triangle, 2, { css: { top: '-50px' }, ease: Power2.easeOut, delay: 1 + 0.5 });
   TweenLite.to(circle, 2, { css: { bottom: '200px' }, ease: Power2.easeOut, delay: 1 + 0.5 });
 
-  TweenLite.to(square, 4, { rotation: 360, ease: Power3.easeOut, delay: 2 + 1 + 0.5 });
-  TweenLite.to(triangle, 4, { rotation: -360, ease: Power2.easeOut, delay: 2 + 1 + 0.5 });
+  TweenLite.to(square, 4, { rotation: '+=360', ease: Power3.easeOut, delay: 2 + 1 + 0.5 });
+  TweenLite.to(triangle, 4, { rotation: '-=360', ease: Power2.easeOut, delay: 2 + 1 + 0.5 });
   TweenLite.to(circle, 4, { css: { x: 20, y: 30 }, ease: Power2.easeOut, delay: 2 + 1 + 0.5 });
 
   const options = screenQ2.querySelectorAll('.q-section__options > li[data-value]');
@@ -163,8 +163,8 @@ const screenQ3Start = () => {
   TweenLite.to(triangle, 2, { css: { bottom: '200px' }, ease: Power2.easeOut, delay: 1 + 0.5 });
   TweenLite.to(circle, 2, { css: { top: '-30px' }, ease: Power2.easeOut, delay: 1 + 0.5 });
 
-  TweenLite.to(square, 4, { rotation: -60, delay: 2 + 1 + 0.5 });
-  TweenLite.to(triangle, 4, { rotation: -360, delay: 2 + 1 + 0.5 });
+  TweenLite.to(square, 4, { rotation: '-=60', delay: 2 + 1 + 0.5 });
+  TweenLite.to(triangle, 4, { rotation: '-=360', delay: 2 + 1 + 0.5 });
   TweenLite.to(circle, 4, { css: { x: '+=20', y: '+=30' }, ease: Power2.easeOut, delay: 2 + 1 + 0.5 });
 
 
@@ -207,8 +207,8 @@ const screenCalculating = () => {
     }
   }
 
-  // 產生 50 個圓形
-  const total = 50;
+  // 產生無數個圓形
+  const total = 30;
   const colors = ['#000', '#fff', '#0027c8'];
 
   for (let i = 0; i < total; i += 1) {
@@ -224,10 +224,10 @@ const screenCalculating = () => {
     calculating.appendChild(div);
   }
 
-  // 綁定 50 個圓形的視差滾動
+  // 綁定無數個圓形的視差滾動
   for (let i = 0; i < total; i += 1) {
     const topP = getRandom(300, 500);
-    const left = getRandom(1000, 3000);
+    const left = getRandom(500, 3000);
     const smallCircle = document.querySelector(`.small-circle${i}`);
 
     new ScrollMagic.Scene({ triggerElement: `.trigger${i % 4 + 1}`, duration: getRandom(500, 2500) })
@@ -265,9 +265,9 @@ const screenResultStart = () => {
   TweenLite.to(document.querySelector('.screenResult__text'), phase1Duration, { css: { opacity: 1 } });
   TweenLite.to(document.querySelector('.screenResult__ans'), phase1Duration, { css: { opacity: 1 } });
 
-  TweenLite.to(document.querySelector('.triangle-blue'), phase1Duration, { css: { bottom: '0' }, ease: Power2.easeOut });
+  TweenLite.to(document.querySelector('.triangle-blue'), phase1Duration, { css: { bottom: '-20px' }, ease: Power2.easeOut });
   TweenLite.to(document.querySelector('.triangle-white'), phase1Duration, { css: { bottom: '0' }, ease: Power1.easeOut });
-  TweenLite.to(document.querySelector('.triangle-black'), phase1Duration, { css: { bottom: '0' }, ease: Power3.easeOut });
+  TweenLite.to(document.querySelector('.triangle-black'), phase1Duration, { css: { bottom: '-30px' }, ease: Power3.easeOut });
 
   const phase2Duration = 2;
 
@@ -281,14 +281,16 @@ const screenResultStart = () => {
   TweenLite.to(document.querySelector('.triangle6'), 2, { css: { top: '-200px' }, ease: Power3.easeOut, delay: phase2Duration });
 
   TweenLite.to(document.querySelector('.triangle-blue'), 2, { css: { bottom: '200px', left: '300px' }, ease: Power3.easeOut, delay: phase2Duration });
-  TweenLite.to(document.querySelector('.triangle-white'), 2, { css: { bottom: '360px', left: '326px', rotation: '60deg' }, ease: Power3.easeOut, delay: phase2Duration });
-  TweenLite.to(document.querySelector('.triangle-black'), 2, { css: { bottom: '338px', left: '426px', rotation: '30deg' }, ease: Power3.easeOut, delay: phase2Duration });
+  TweenLite.to(document.querySelector('.triangle-white'), 2, { css: { bottom: '340px', left: '310px', rotation: '+=80deg' }, ease: Power3.easeOut, delay: phase2Duration });
+  TweenLite.to(document.querySelector('.triangle-black'), 2, { css: { bottom: '338px', left: '350px', rotation: '+=35deg' }, ease: Power3.easeOut, delay: phase2Duration });
 
   TweenLite.to(document.querySelector('.screenResult__text'), 2, { css: { top: '110px', left: '894px' }, ease: Power3.easeOut, delay: phase2Duration });
   TweenLite.to(document.querySelector('.screenResult__ans'), 2, { css: { top: '169px', left: '945px' }, ease: Power3.easeOut, delay: phase2Duration });
   TweenLite.to(document.querySelector('.screenResult__result'), 2, { css: { opacity: 1 }, ease: Power3.easeOut, delay: phase2Duration });
 
-  TweenLite.to(document.querySelector('.triangle-blue'), 4, { css: { rotation: '+=120deg' }, delay: phase2Duration + 1 });
-  TweenLite.to(document.querySelector('.triangle-white'), 4, { css: { rotation: '-=180deg' }, delay: phase2Duration + 1 });
-  TweenLite.to(document.querySelector('.triangle-black'), 4, { css: { x: '+=30', y: '-=20' }, delay: phase2Duration + 1 });
+  TweenLite.to(document.querySelector('.triangle-white'), 6, { css: { rotation: '-=65deg' }, delay: phase2Duration + 2 });
+  TweenLite.to(document.querySelector('.triangle-black'), 6, { css: { x: '+=30', y: '-=80', rotation: '+=135deg' }, delay: phase2Duration + 2 });
+  TweenLite.to(document.querySelector('.triangle-blue'), 2, { css: { x: '+=20', y: '-=10' }, delay: phase2Duration + 2 });
+
+  TweenLite.to(document.querySelector('.triangle-blue'), 4, { css: { x: '-=70', y: '+=20' }, delay: phase2Duration + 2 + 2 });
 };

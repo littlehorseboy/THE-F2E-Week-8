@@ -233,26 +233,26 @@ body {
     background-color: $pink;
 
     &__square {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       background-color: $light-blue;
-      bottom: -400px;
+      bottom: -500px;
       top: unset;
-      left: -170px;
-      transform: rorate(40deg);
+      left: -100px;
+      transform: rotate(40deg);
     }
 
     &__triangle {
       border-width: 0px 150px 250px 150px;
       top: 120vh;
-      left: 100px;
+      left: 200px;
       transform: rotate(25deg);
     }
 
     &__circle {
       width: 200px;
       height: 200px;
-      left: 70px;
+      left: 120px;
       bottom: -300px;
     }
   }
@@ -412,7 +412,7 @@ body {
     border-width: 0px 180px 300px 180px;
     border-color: transparent transparent $deep-blue transparent;
     bottom: -400px;
-    left: 37%;
+    left: 36%;
     z-index: 10;
   }
 
@@ -422,7 +422,7 @@ body {
     border-width: 0px 180px 300px 180px;
     border-color: transparent transparent #fff transparent;
     bottom: -400px;
-    left: 39%;
+    left: 38%;
     z-index: 7;
   }
 
